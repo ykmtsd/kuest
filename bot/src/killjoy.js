@@ -92,13 +92,11 @@ client.on("interactionCreate", async interaction => {
     }
 
     case "mapban": {
-      new MessageButton()
-        .setCustomId("team1").setStyle("PRIMARY").setLabel("チーム1"),
+      const team1 = new MessageButton()
+        .setCustomId("team1").setStyle("PRIMARY").setLabel("チーム1")
             
-      new MessageButton()
-        .setCustomId("team2").setStyle("PRIMARY").setLabel("チーム2"),
-
-      await interaction.reply({ ephemeral: true});
+      const team2 = new MessageButton()
+        .setCustomId("team2").setStyle("PRIMARY").setLabel("チーム2")
 
       if (interaction.customId === "team1"){
         await interaction.reply({
