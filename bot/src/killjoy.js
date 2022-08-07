@@ -3,8 +3,7 @@ import { parse } from "ini";
 const config = parse(readFileSync("./config.ini", "utf-8"));
 
 import Discord, { Client } from "discord.js";
-const { SlashCommandBuilder } = import('@discordjs/builders');
-const { MessageActionRow, MessageButton } = import('discord.js');
+
 const options = {
   presence: {
     activities: [
@@ -93,18 +92,14 @@ client.on("interactionCreate", async interaction => {
     }
 
     case "mapban": {
-      module.exports = {
-        data: new SlashCommandBuilder().setName('killjoy').setDescription('Choose team and banned maps'),
-        async execute(interaction, client) {
-          const row = new MessageActionRow()
-            .addComponents(
-            new MessageButton()
-              .setCustomId("team1").setStyle("PRIMARY").setLabel("チーム1"),
+      new MessageButton()
+        .setCustomId("team1").setStyle("PRIMARY").setLabel("チーム1"),
             
-            new MessageButton()
-              .setCustomId("team2").setStyle("PRIMARY").setLabel("チーム2"),
-            );
-            await interaction.reply({ ephemeral: true, components: [row] });
+      new MessageButton()
+        .setCustomId("team2").setStyle("PRIMARY").setLabel("チーム2"),
+
+      await interaction.reply({ ephemeral: true});
+
       if (interaction.customId === "team1"){
         await interaction.reply({
           content: "チーム1のBANマップを選択してください"
