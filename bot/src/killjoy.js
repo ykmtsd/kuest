@@ -3,7 +3,6 @@ import { parse } from "ini";
 const config = parse(readFileSync("./config.ini", "utf-8"));
 
 import Discord, { Client } from "discord.js";
-
 const options = {
   presence: {
     activities: [
@@ -22,7 +21,6 @@ const client = new Client(options);
 
 import { setCommand } from "./command/command.js";
 import Guilds from "./guild/Guilds.js";
-import { channel } from "diagnostics_channel";
 
 const time = 43200000;
 const guilds = new Guilds();
@@ -62,10 +60,6 @@ client.on("interactionCreate", async interaction => {
         "マップを1つ選びます"
       );
       embed.addField(
-        "/mapban",
-        "BANするマップを選びます"
-      );
-      embed.addField(
         "/setting",
         "使用するVCを設定します\n/setting VC1 VC2 (VC0)"
       );
@@ -88,141 +82,6 @@ client.on("interactionCreate", async interaction => {
       const maps = config.data.maps;
       const map = maps[Math.floor(Math.random() * maps.length)];
       await interaction.followUp(map);
-      break;
-    }
-
-    case "mapban": {
-      const team1 = new MessageButton()
-        .setCustomId("team1").setStyle("PRIMARY").setLabel("チーム1")
-            
-      const team2 = new MessageButton()
-        .setCustomId("team2").setStyle("PRIMARY").setLabel("チーム2")
-
-      if (interaction.customId === "team1"){
-        await interaction.reply({
-          content: "チーム1のBANマップを選択してください"
-        });
-
-        const ascent1 = new Discord.MessageButton()
-          .setCustomId("ascent1")
-          .setStyle("PRIMARY")
-          .setLabel("アセント")
-        await message.channel.send({
-          content: "チーム1はアセントをBANしました"
-        });
-        const icebox1 = new Discord.MessageButton()
-          .setCustomId("icebox1")
-          .setStyle("PRIMARY")
-          .setLabel("アイスボックス")
-        await message.channel.send({
-          content: "チーム1はアイスボックスをBANしました"
-        });
-        const split1 = new Discord.MessageButton()
-          .setCustomId("split1")
-          .setStyle("PRIMARY")
-          .setLabel("スプリット")
-        await message.channel.send({
-          content: "チーム1はスプリットをBANしました"
-        });
-        const bind1 = new Discord.MessageButton()
-          .setCustomId("bind1")
-          .setStyle("PRIMARY")
-          .setLabel("バインド")
-        await message.channel.send({
-          content: "チーム1はバインドをBANしました"
-        });
-        const fracture1 = new Discord.MessageButton()
-          .setCustomId("fracture1")
-          .setStyle("PRIMARY")
-          .setLabel("フラクチャー")
-        await message.channel.send({
-          content: "チーム1はフラクチャーをBANしました"
-        });
-        const breeze1 = new Discord.MessageButton()
-          .setCustomId("breeze1")
-          .setStyle("PRIMARY")
-          .setLabel("ブリーズ")
-        await message.channel.send({
-          content: "チーム1はブリーズをBANしました"
-        });
-        const haven1 = new Discord.MessageButton()
-          .setCustomId("haven1")
-          .setStyle("PRIMARY")
-          .setLabel("ヘイヴン")
-        await message.channel.send({
-          content: "チーム1はヘイヴンをBANしました"
-        });
-        const pearl1 = new Discord.MessageButton()
-          .setCustomId("peal1")
-          .setStyle("PRIMARY")
-          .setLabel("パール")
-        await message.channel.send({
-          content: "チーム1はパールをBANしました"
-        });
-      }
-
-      if (interaction.customId === "team2"){
-        await interaction.reply({
-          content: "チーム2のBANマップを選択してください",
-        });
-
-        const ascent2 = new Discord.MessageButton()
-          .setCustomId("ascent2")
-          .setStyle("PRIMARY")
-          .setLabel("アセント")
-        await message.channel.send({
-          content: "チーム2はアセントをBANしました"
-        });
-        const icebox2 = new Discord.MessageButton()
-          .setCustomId("icebox2")
-          .setStyle("PRIMARY")
-          .setLabel("アイスボックス")
-        await message.channel.send({
-          content: "チーム2はアイスボックスをBANしました"
-        });
-        const split2 = new Discord.MessageButton()
-          .setCustomId("split2")
-          .setStyle("PRIMARY")
-          .setLabel("スプリット")
-        await message.channel.send({
-          content: "チーム2はスプリットをBANしました"
-        });
-        const bind2 = new Discord.MessageButton()
-          .setCustomId("bind2")
-          .setStyle("PRIMARY")
-          .setLabel("バインド")
-        await message.channel.send({
-          content: "チーム2はバインドをBANしました"
-        });
-        const fracture2 = new Discord.MessageButton()
-          .setCustomId("fracture2")
-          .setStyle("PRIMARY")
-          .setLabel("フラクチャー")
-        await message.channel.send({
-          content: "チーム2はフラクチャーをBANしました"
-        });
-        const breeze2 = new Discord.MessageButton()
-          .setCustomId("breeze2")
-          .setStyle("PRIMARY")
-          .setLabel("ブリーズ")
-        await message.channel.send({
-          content: "チーム2はブリーズをBANしました"
-        });
-        const haven2 = new Discord.MessageButton()
-          .setCustomId("haven2")
-          .setStyle("PRIMARY")
-          .setLabel("ヘイヴン")
-        await message.channel.send({
-          content: "チーム2はヘイヴンをBANしました"
-        });
-        const pearl2 = new Discord.MessageButton().setCustomId("pearl2").setStyle("PRIMARY").setLabel("パール");
-        await message.channel.send({
-          content: "チーム2はパールをBANしました"
-        });
-        }
-      }
-      
-      }
       break;
     }
 
