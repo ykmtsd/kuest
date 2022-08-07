@@ -3,8 +3,8 @@ import { parse } from "ini";
 const config = parse(readFileSync("./config.ini", "utf-8"));
 
 import Discord, { Client } from "discord.js";
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageActionRow, MessageButton } = require('discord.js');
+const { SlashCommandBuilder } = import('@discordjs/builders');
+const { MessageActionRow, MessageButton } = import('discord.js');
 const options = {
   presence: {
     activities: [
