@@ -1,0 +1,23 @@
+{
+  "name": "killjoy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "killjoy.js",
+  "type": "module",
+  "scripts": {
+    "setup": "node src/setup.js",
+    "start": "node src/killjoy.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "valorant"
+  ],
+  "author": "secchanu",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "ini": "^2.0.0",
+    "setup": "^0.0.3"
+  }
+}

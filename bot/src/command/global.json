@@ -1,0 +1,38 @@
+[
+  {
+    "name": "help",
+    "description": "BOTの説明を表示します"
+  },
+  {
+    "name": "mapban",
+    "description": "BANするマップを選択します"
+  },
+  {
+    "name": "map",
+    "description": "マップを1つ選びます"
+  },
+  {
+    "name": "setting",
+    "description": "使用するVCを設定します",
+    "options": [
+      {
+        "type": "CHANNEL",
+        "name": "alpha",
+        "description": "1つ目のチーム用のVC",
+        "required": true
+      },
+      {
+        "type": "CHANNEL",
+        "name": "bravo",
+        "description": "2つ目のチーム用のVC",
+        "required": true
+      },
+      {
+        "type": "CHANNEL",
+        "name": "home",
+        "description": "全員が集合するVC(指定無しの場合は1つ目のVC)",
+        "required": false
+      }
+    ]
+  }
+]

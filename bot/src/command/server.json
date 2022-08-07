@@ -1,0 +1,10 @@
+[
+  {
+    "name": "team",
+    "description": "同じVCにいるメンバーを2チームに分けます"
+  },
+  {
+    "name": "call",
+    "description": "チーム分けしたメンバー全員を1つのVCに集合させます"
+  }
+]
