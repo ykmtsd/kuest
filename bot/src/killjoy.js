@@ -3,6 +3,8 @@ import { parse } from "ini";
 const config = parse(readFileSync("./config.ini", "utf-8"));
 
 import Discord, { Client } from "discord.js";
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const { MessageActionRow, MessageButton } = require('discord.js');
 const options = {
   presence: {
     activities: [
@@ -91,18 +93,18 @@ client.on("interactionCreate", async interaction => {
     }
 
     case "mapban": {
-      await interaction.deferReply({ ephemeral: true });
-
-      const team1 = new Discord.MessageButton()
-        .setCustomId("team1")
-        .setStyle("PRIMARY")
-        .setLabel("チーム1")
-      
-      const team2 = new Discord.MessageButton()
-        .setCustomId("team2")
-        .setStyle("PRIMARY")
-        .setLabel("チーム2")
-
+      module.exports = {
+        data: new SlashCommandBuilder().setName('killjoy').setDescription('Choose team and banned maps'),
+        async execute(interaction, client) {
+          const row = new MessageActionRow()
+            .addComponents(
+            new MessageButton()
+              .setCustomId("team1").setStyle("PRIMARY").setLabel("チーム1"),
+            
+            new MessageButton()
+              .setCustomId("team2").setStyle("PRIMARY").setLabel("チーム2"),
+            );
+            await interaction.reply({ ephemeral: true, components: [row] });
       if (interaction.customId === "team1"){
         await interaction.reply({
           content: "チーム1のBANマップを選択してください"
@@ -220,13 +222,13 @@ client.on("interactionCreate", async interaction => {
         await message.channel.send({
           content: "チーム2はヘイヴンをBANしました"
         });
-        const pearl2 = new Discord.MessageButton()
-          .setCustomId("pearl2")
-          .setStyle("PRIMARY")
-          .setLabel("パール")
+        const pearl2 = new Discord.MessageButton().setCustomId("pearl2").setStyle("PRIMARY").setLabel("パール");
         await message.channel.send({
           content: "チーム2はパールをBANしました"
         });
+        }
+      }
+      
       }
       break;
     }
