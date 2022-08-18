@@ -2,7 +2,9 @@ import { readFileSync } from "fs";
 import { parse } from "ini";
 const config = parse(readFileSync("./config.ini", "utf-8"));
 
-import Discord, { Client } from "discord.js";
+import Discord, { Client, MessageButton } from "discord.js";
+import {MessageActionRow, MessdageButton } from "discord.js";
+
 const options = {
   presence: {
     activities: [
@@ -86,17 +88,10 @@ client.on("interactionCreate", async interaction => {
     }
 
     case "mapban": {
-      const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-
-      const row = new ActionRowBuilder()
-			  .addComponents(
-				  new ButtonBuilder()
-					    .setCustomId('primary')
-					    .setLabel('Primary')
-					  .setStyle(ButtonStyle.Primary),
-			  );
-
-		  await interaction.reply({ content: 'Pong!', components: [row] });
+      await interaction.deferReply({ ephemeral: true });
+      client.on('messageCreate', message => {
+        message.channel.send('ぽんぐ!');
+      });
       break;
     }
 
