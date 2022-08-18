@@ -3,7 +3,6 @@ import { parse } from "ini";
 const config = parse(readFileSync("./config.ini", "utf-8"));
 
 import Discord, { Client, MessageButton } from "discord.js";
-import {MessageActionRow, MessdageButton } from "discord.js";
 
 const options = {
   presence: {
