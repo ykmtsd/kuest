@@ -87,8 +87,12 @@ client.on("interactionCreate", async interaction => {
     }
 
     case "mapban": {
-      await interaction.deferReply({ ephemeral: true });
-      interaction.followUp("test");
+      await interaction.deferReply({ ephemeral: false });
+      const button = new Discord.MessageButton()
+        .customId("test")
+        .setStyle("PRIMARY")
+        .setLabel("test")
+      await interaction.followUp(button);
       break;
     }
 
