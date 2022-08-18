@@ -86,8 +86,24 @@ client.on("interactionCreate", async interaction => {
     }
 
     case "mapban": {
+      const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
-    break;
+      client.on('interactionCreate', async interaction => {
+	      if (!interaction.isChatInputCommand()) return;
+
+	      if (interaction.commandName === 'ping') {
+		      const row = new ActionRowBuilder()
+			      .addComponents(
+				      new ButtonBuilder()
+					      .setCustomId('primary')
+					      .setLabel('Primary')
+					      .setStyle(ButtonStyle.Primary),
+			      );
+
+		    await interaction.reply({ content: 'Pong!', components: [row] });
+	      }
+      });
+      break;
     }
 
     case "setting": {
