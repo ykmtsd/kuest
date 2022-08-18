@@ -88,11 +88,12 @@ client.on("interactionCreate", async interaction => {
 
     case "mapban": {
       await interaction.deferReply({ ephemeral: false });
-      const button = new Discord.MessageButton()
+      const testbutton = new Discord.MessageButton()
         .customId("test")
         .setStyle("PRIMARY")
         .setLabel("test")
-      await interaction.followUp(button);
+      const button = [new Discord.MessageActionRow().addComponents(testbutton)];
+      await interaction.editReply(button);
       break;
     }
 
