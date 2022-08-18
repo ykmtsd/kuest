@@ -91,7 +91,7 @@ client.on("interactionCreate", async interaction => {
       client.on('interactionCreate', async interaction => {
 	      if (!interaction.isChatInputCommand()) return;
 
-	      if (interaction.commandName === 'ping') {
+	      if (interaction.commandName === 'mapban') {
 		      const row = new ActionRowBuilder()
 			      .addComponents(
 				      new ButtonBuilder()
