@@ -88,9 +88,7 @@ client.on("interactionCreate", async interaction => {
 
     case "mapban": {
       await interaction.deferReply({ ephemeral: true });
-      client.on('messageCreate', message => {
-        message.channel.send('ぽんぐ!');
-      });
+      interaction.followUp("test");
       break;
     }
 
