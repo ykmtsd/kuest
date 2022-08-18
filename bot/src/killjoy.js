@@ -92,8 +92,7 @@ client.on("interactionCreate", async interaction => {
         .customId("test")
         .setStyle("PRIMARY")
         .setLabel("test")
-      const button = [new Discord.MessageActionRow().addComponents(testbutton)];
-      await interaction.editReply(button);
+      await interaction.editReply(testbutton);
       break;
     }
 
