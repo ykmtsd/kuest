@@ -92,7 +92,7 @@ client.on("interactionCreate", async interaction => {
         .setCustomId("test")
         .setStyle("PRIMARY")
         .setLabel("test")
-      await interaction.editReply(testbutton);
+      await interaction.followUp(testbutton);
       break;
     }
 
