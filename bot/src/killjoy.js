@@ -88,21 +88,15 @@ client.on("interactionCreate", async interaction => {
     case "mapban": {
       const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
-      client.on('interactionCreate', async interaction => {
-	      if (!interaction.isChatInputCommand()) return;
+      const row = new ActionRowBuilder()
+			  .addComponents(
+				  new ButtonBuilder()
+					    .setCustomId('primary')
+					    .setLabel('Primary')
+					  .setStyle(ButtonStyle.Primary),
+			  );
 
-	      if (interaction.commandName === 'mapban') {
-		      const row = new ActionRowBuilder()
-			      .addComponents(
-				      new ButtonBuilder()
-					      .setCustomId('primary')
-					      .setLabel('Primary')
-					      .setStyle(ButtonStyle.Primary),
-			      );
-
-		    await interaction.reply({ content: 'Pong!', components: [row] });
-	      }
-      });
+		  await interaction.reply({ content: 'Pong!', components: [row] });
       break;
     }
 
