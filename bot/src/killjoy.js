@@ -88,11 +88,11 @@ client.on("interactionCreate", async interaction => {
 
     case "mapban": {
       await interaction.deferReply({ ephemeral: false });
-      const testbutton = new Discord.MessageButton()
-        .setCustomId("test")
-        .setStyle("PRIMARY")
-        .setLabel("test")
-      await interaction.followUp(testbutton);
+      const cancelButton = new Discord.MessageButton().setCustomId("cancel").setStyle("DANGER").setLabel("キャンセル");
+      const moveButton = new Discord.MessageButton().setCustomId("move").setStyle("SUCCESS").setLabel("移動");
+      const againButton = new Discord.MessageButton().setCustomId("again").setStyle("PRIMARY").setLabel("再抽選");
+      const components = [new Discord.MessageActionRow().addComponents(cancelButton).addComponents(moveButton).addComponents(againButton)];
+      int ? await int.update({ content, components }) : await interaction.editReply({ content, components });
       break;
     }
 
